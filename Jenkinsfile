@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_IMAGE_NAME = "kv1995/jenkin"
+        DOCKER_IMAGE_NAME = "kv1995/jenkins"
     }
     stages {
         stage('Install Kubernetes') {
