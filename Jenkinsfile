@@ -21,7 +21,6 @@ pipeline {
                  sudo systemctl daemon-reload && \
                  sudo systemctl restart kubelet && \
                  sudo swapoff -a &&\
-                 sudo kubectl taint nodes --all node-role.kubernetes.io/master- && \
                  sudo kubeadm init --pod-network-cidr=172.31.16.0/20 && \
                  sudo mkdir -p /home/ubuntu/.kube && \
                  sudo cp -i /etc/kubernetes/admin.conf /home/ubuntu/.kube/config && \
@@ -32,6 +31,7 @@ pipeline {
                  sudo chown root:docker /var/run/docker.sock && \
                  sudo systemctl restart kubelet && \
                  sudo systemctl restart jenkins && \
+                 sudo kubectl taint nodes --all node-role.kubernetes.io/master- && \
                  sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml && \
                  sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml && \
                  sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/alternative/kubernetes-dashboard.yaml && \
