@@ -21,6 +21,7 @@ pipeline {
                  sudo systemctl daemon-reload && \
                  sudo systemctl restart kubelet && \
                  sudo swapoff -a &&\
+                 sudo kubectl taint nodes --all node-role.kubernetes.io/master- && \
                  sudo kubeadm init --pod-network-cidr=172.31.16.0/20 && \
                  sudo mkdir -p /home/ubuntu/.kube && \
                  sudo cp -i /etc/kubernetes/admin.conf /home/ubuntu/.kube/config && \
