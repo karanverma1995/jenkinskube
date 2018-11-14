@@ -24,10 +24,10 @@ pipeline {
                  sudo systemctl restart kubelet && \
                  sudo swapoff -a &&\
                  sudo kubeadm init --pod-network-cidr=10.142.0.0/24 && \
-                 sudo mkdir -p /home/karan_verma/.kube && \
-                 sudo cp -i /etc/kubernetes/admin.conf /home/karan_verma/.kube/config && \
-                 sudo chown $(id -u):$(id -g) /home/karan_verma/.kube/config && \
-                 sudo cp -R /home/karan_verma/.kube/ /var/lib/jenkins && \
+                 sudo mkdir -p /home/ubuntu/.kube && \
+                 sudo cp -i /etc/kubernetes/admin.conf /home/ubuntu/.kube/config && \
+                 sudo chown $(id -u):$(id -g) /home/ubuntu/.kube/config && \
+                 sudo cp -R /home/ubuntu/.kube/ /var/lib/jenkins && \
                  sudo chown -R jenkins:jenkins /var/lib/jenkins/.kube/ &&\
                  sudo usermod -aG docker jenkins && \
                  sudo chown root:docker /var/run/docker.sock && \
